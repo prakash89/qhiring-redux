@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Provider } from 'react-redux';
-import { Route, Link, Switch, BrowserRouter } from 'react-router-dom';
+import { Route, Link, Switch, HashRouter } from 'react-router-dom';
 import { createStore, applyMiddleware } from 'redux';
 import ReduxThunk from 'redux-thunk';
 import { App, Box } from 'grommet';
@@ -38,14 +38,14 @@ class MainRoute extends Component {
   render() {
     return (
       <Provider store={store}>
-        <BrowserRouter>
+        <HashRouter>
         <App centered={false}>
         <Header {...this.props}/>
           <Box pad='medium'>
               <Switch>
                 <Route exact path="/" component={Signup} />
                 <Route exact path="/login" component={Login} />
-                <Route exact path="/instaction" component={Instaction} />
+                <Route exact path="/instruction" component={Instaction} />
                 <Route exact path="/questions" component={Questions} />
                 <Route exact path="/feedback" component={Feedback} />
                 <Route exact path="/callback" render={(props) => {
@@ -55,7 +55,7 @@ class MainRoute extends Component {
               </Switch>
             </Box>
           </App>
-        </BrowserRouter>
+        </HashRouter>
       </Provider>
     );
   }

@@ -18,7 +18,7 @@ export const signup = (params) => {
       if (json.user.userRole == "admin") {
         browserHistory.push('/QuestionsList')
       }else{
-        browserHistory.push('/instaction')
+        browserHistory.push('/instruction')
       }
 
     })
