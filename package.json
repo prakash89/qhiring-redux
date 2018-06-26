@@ -3,14 +3,28 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "auth0-js": "^9.6.1",
+    "grommet-hpe-css": "github:vsanjeevagowda-s/grommet-css#grommet-hpe-css",
+    "history": "^4.7.2",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
-    "react-scripts": "1.1.4"
+    "react-redux": "^5.0.7",
+    "react-router-dom": "^4.3.1",
+    "react-scripts": "1.1.4",
+    "react-stars": "^2.2.5",
+    "react-test-renderer": "^16.4.1",
+    "redux": "^4.0.0",
+    "redux-thunk": "^2.3.0"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "PORT=3010 react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
+  },
+  "devDependencies": {
+    "jest": "^23.2.0",
+    "node-sass": "^4.9.0",
+    "redux-mock-store": "^1.5.3"
   }
 }
