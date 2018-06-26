@@ -15,7 +15,7 @@ export const signup = (params) => {
         type: SIGNUP,
         payload: json
       })
-      if (json.user.userRole == "admin") {
+      if (json.user.userRole === "admin") {
         browserHistory.push('/QuestionsList')
       }else{
         browserHistory.push('/instruction')

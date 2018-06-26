@@ -1,6 +1,5 @@
 import {LOGIN} from '../actionTypes';
 import API_END_POINT from '../../Api';
-import browserHistory from '../../history';
 
 
 export const login = (params) => {
@@ -19,11 +18,6 @@ export const login = (params) => {
         type: LOGIN,
         payload: json
       })
-      // if (json.user.userRole == "admin") {
-      //   browserHistory.push('/QuestionsList')
-      // }else{
-      //   browserHistory.push('/instaction')
-      // }
 
     })
     .catch( error => {

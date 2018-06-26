@@ -11,7 +11,6 @@ import { connect } from 'react-redux';
 import { signup } from '../redux/actions/signup';
 import '../css/signup.css';
 import Toast from 'grommet/components/Toast';
-import { formError } from '../formError';
 import Box from 'grommet/components/Box';
 
 class Signup extends Component {
@@ -64,14 +63,15 @@ class Signup extends Component {
       phone: this.state.phone,
       city: this.state.city,
     }
-    if (this.state.formValid == true) {
+    if (this.state.formValid === true) {
       this.props.signup(params)
     }
 
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.success) {
+    if (nextProps.message === "You have successfully signed up.") {
+      this.props.history.push('/instruction')
     }
   }
 
@@ -119,7 +119,7 @@ class Signup extends Component {
         fieldValidationErrors.password = passwordValid ? '' : ' Please enter more than 3 chanracters';
         break;
       case 'passwordconfirmation':
-        confirmPasswordValid = (this.state.password == value);
+        confirmPasswordValid = (this.state.password === value);
         fieldValidationErrors.passwordconfirmation = confirmPasswordValid ? '' : 'password and password confirmation is not match';
         break;
       case 'collage':
@@ -157,7 +157,7 @@ class Signup extends Component {
         pad='medium'
         margin='small'
       >
-        {((this.state.formValid == false) && this.state.isSubmit) ? (<Toast status='critical'>
+        {((this.state.formValid === false) && this.state.isSubmit) ? (<Toast status='critical'>
           Invalid Forms.
       </Toast>) : null}
         <Form onSubmit={(e) => this.signupSubmit(e)}>

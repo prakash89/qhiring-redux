@@ -1,10 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Title from 'grommet/components/Title';
-import FormField from 'grommet/components/FormField';
-import Heading from 'grommet/components/Heading';
-import RadioButton from 'grommet/components/RadioButton';
-import Box from 'grommet/components/Box';
 import { fetchQuestions } from '../redux/actions/questions';
 import Button from 'grommet/components/Button';
 import VERBAL from './question/verbal';
@@ -45,7 +40,7 @@ class Questions extends Component {
       this.setState({ showQuantitative: nextProps.questions.showQuantitative });
       this.setState({ showLogical: nextProps.questions.showLogical });
     }
-    if(nextProps.questions.sectionNumber == 3) {
+    if(nextProps.questions.sectionNumber === 3) {
       this.props.history.push('/feedback');
     }
   }
@@ -69,7 +64,6 @@ class Questions extends Component {
 
 
   render() {
-    let { userAnswers } = this.props;
     return (
       <div className="container mb-5">
         {this.state.showVerbal &&
