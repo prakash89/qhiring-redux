@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import Header from 'grommet/components/Header';
-import Title from 'grommet/components/Title';
+import { Header, Title} from 'grommet';
 import { Link } from 'react-router-dom';
 import { withRouter } from 'react-router'
 import '../css/header.css';

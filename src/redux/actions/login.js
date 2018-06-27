@@ -1,4 +1,4 @@
-import {LOGIN} from '../actionTypes';
+import { LOGIN, LOGOUT } from '../actionTypes';
 import API_END_POINT from '../../Api';
 import history from "../../history";
 
@@ -10,25 +10,45 @@ export const login = (params) => {
       method: 'POST',
       body: JSON.stringify(params),
     })
-    .then(response => response.json())
-    .then(json => {
-      localStorage.setItem('idToken', json.session.authToken);
-      localStorage.setItem('userEmail', json.user.email);
-      localStorage.setItem('userRole', json.user.userRole);
-      dispatch({
-        type: LOGIN,
-        payload: json
+      .then(response => response.json())
+      .then(json => {
+        localStorage.setItem('idToken', json.session.authToken);
+        localStorage.setItem('userEmail', json.user.email);
+        localStorage.setItem('userRole', json.user.userRole);
+        dispatch({
+          type: LOGIN,
+          payload: json
+        })
+        if (json.user.userRole === 'admin') {
+          history.push('/adminQuestionsList');
+        } else {
+          history.push('/instruction');
+        }
+
+
       })
-      if (json.user.userRole === 'admin') {
-        history.push('/adminQuestionsList');
-      } else {
-        history.push('/instruction');
-      }
+      .catch(error => {
+        console.log("error", error);
+      })
+  }
+}
 
-
+export const logout = (params) => {
+  return (dispatch) => {
+    const URL = `${API_END_POINT}logout`;
+    return fetch(URL, {
+      method: 'POST',
+      body: JSON.stringify(params),
     })
-    .catch( error => {
-      console.log("error",error);
-    })
+      .then(response => response.json())
+      .then(json => {
+        localStorage.clear();
+        dispatch({
+          type: LOGOUT
+        })
+      })
+      .catch(error => {
+        console.log("error", error);
+      })
   }
 }
