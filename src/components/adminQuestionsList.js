@@ -27,8 +27,8 @@ class AdminQuestionsList extends Component {
     this.setState({ showAddQuestionLayer: true })
   }
 
-  hideAddQuestionModal(){
-    this.setState({ showAddQuestionLayer: false})
+  hideAddQuestionModal() {
+    this.setState({ showAddQuestionLayer: false })
   }
 
   renderQuestionRows() {
@@ -111,8 +111,9 @@ class AdminQuestionsList extends Component {
           {this.state.showAddQuestionLayer &&
             <Layer
               closer={true}
+              onClose={this.hideAddQuestionModal.bind(this)}
             >
-            <AddQuestionsModal onClose={this.hideAddQuestionModal.bind(this)} />
+              <AddQuestionsModal onClose={this.hideAddQuestionModal.bind(this)} />
             </Layer>}
         </Article>
       </div>
