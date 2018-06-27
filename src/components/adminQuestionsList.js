@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Table from 'grommet/components/Table';
 import TableRow from 'grommet/components/TableRow';
-import { questionsAdmin } from "../redux/actions";
+import { adminQuestionsList } from "../redux/actions";
 import Article from 'grommet/components/Article';
 import Button from 'grommet/components/Button';
-import { Layer, Box, Split } from 'grommet';
+import { Layer, Box, Split, Toast } from 'grommet';
 import AddQuestionsModal from './addQuestionsModal';
 
 import '../css/questionsList.css';
@@ -20,11 +20,15 @@ class AdminQuestionsList extends Component {
   }
 
   componentDidMount() {
-    this.props.questionsAdmin();
+    this.props.adminQuestionsList();
   }
 
   showAddQuestionModal() {
     this.setState({ showAddQuestionLayer: true })
+  }
+
+  hideAddQuestionModal(){
+    this.setState({ showAddQuestionLayer: false})
   }
 
   renderQuestionRows() {
@@ -62,10 +66,9 @@ class AdminQuestionsList extends Component {
   }
 
   render() {
-    const { questionsList } = this.props;
-    console.log(questionsList)
     return (
       <div>
+        {this.props.message && <Toast status='ok'> Question added successfully.</Toast>}
         <Split fixed={false}>
           <Box />
           <Box />
@@ -109,7 +112,7 @@ class AdminQuestionsList extends Component {
             <Layer
               closer={true}
             >
-              <AddQuestionsModal />
+            <AddQuestionsModal onClose={this.hideAddQuestionModal.bind(this)} />
             </Layer>}
         </Article>
       </div>
@@ -121,10 +124,11 @@ class AdminQuestionsList extends Component {
 
 const mapStateToProps = (state) => {
   return ({
-    questionsList: state.questionsData.questionsList
+    questionsList: state.questionsData.questions,
+    message: state.questionsData.message
   })
 }
 
 
 
-export default connect(mapStateToProps, { questionsAdmin })(AdminQuestionsList);
+export default connect(mapStateToProps, { adminQuestionsList })(AdminQuestionsList);

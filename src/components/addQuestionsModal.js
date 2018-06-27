@@ -23,7 +23,7 @@ class AddQuestionsModal extends Component {
   }
 
   selectChange(e) {
-    debugger
+
     console.log(`vale: ${JSON.stringify(e.value)}`)
     console.log(`vale: ${JSON.stringify(e.label)}`)
     console.log(`vale: ${e.target.name}`)
@@ -40,17 +40,15 @@ class AddQuestionsModal extends Component {
       answer: this.state.answer,
       section_id: this.state.section.value
     }
-    console.log(`submit data ${JSON.stringify(this.state)}`)
     this.props.addQuestion(value);
+    this.props.onClose();
+
   }
 
   render() {
 
     return (
       <Box pad='large'>
-        <Toast status='ok'>
-          A short message to let the user know something.
-        </Toast>
         <FormFields>
           <Box pad='small'>
             <label>Title</label>
@@ -115,8 +113,9 @@ class AddQuestionsModal extends Component {
 
 
 const mapStateToProps = (state) => {
-  // const { registerSuccess } = state;
-  return state;
+  return {
+    questionsData: state.questionsData
+  }
 }
 
 export default connect(mapStateToProps, { addQuestion })(AddQuestionsModal);

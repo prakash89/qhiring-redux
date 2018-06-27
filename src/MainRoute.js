@@ -13,7 +13,8 @@ import Feedback from './components/feedback';
 import Questions from './components/questions';
 import Instaction from './components/instaction';
 import Callback from './components/callback';
-import Header from './components/header'
+import Header from './components/header';
+import adminQuestionsList from './components/adminQuestionsList';
 
 const store = createStore(
   reducers, {}, applyMiddleware(ReduxThunk)
@@ -48,6 +49,7 @@ class MainRoute extends Component {
                 <Route exact path="/instruction" component={Instaction} />
                 <Route exact path="/questions" component={Questions} />
                 <Route exact path="/feedback" component={Feedback} />
+                <Route path="/adminQuestionsList" component={adminQuestionsList} />
                 <Route exact path="/callback" render={(props) => {
                   handleAuthentication(props);
                   return <Callback {...props} />

@@ -3,8 +3,10 @@ import {
 	SHOWVERBAL,
 	SHOWLOGICAL,
   SHOWQUANTITATIVE,
-  QUESTIONSLIST,
+  ADMINQUESTIONSLIST,
   LOGOUT,
+  QUESTION_ADDITION_SUCCESS,
+  QUESTION_ADDITION_SUCCESS_HIDE
 } from '../actionTypes'
 
 
@@ -30,12 +32,22 @@ export default (state = INITIAL_STATE, action) => {
         ...state,
         items: action.questions,
       };
-    case QUESTIONSLIST:
+    case ADMINQUESTIONSLIST:
       let questions  = action.payload;
       return {
         ...state,
         questions
       };
+    case QUESTION_ADDITION_SUCCESS:
+    return {
+      ...state,
+      message: 'Question added successfully.'
+    }
+    case QUESTION_ADDITION_SUCCESS_HIDE:
+    return {
+      ...state,
+      message: ''
+    }
     case SHOWLOGICAL:
       return {
         ...state,

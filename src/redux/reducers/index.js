@@ -8,5 +8,5 @@ export default combineReducers({
   loginData: loginReducer,
   signupData: signupReducer,
   feedbackData: feedbackReducer,
-  questionsData: questonsReducer,
+  questionsData: questonsReducer
 })
