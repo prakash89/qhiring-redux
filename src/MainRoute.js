@@ -4,7 +4,7 @@ import { Route, Switch, HashRouter } from 'react-router-dom';
 import { createStore, applyMiddleware } from 'redux';
 import ReduxThunk from 'redux-thunk';
 import { App, Box } from 'grommet';
-import '../node_modules/grommet-hpe-css';
+import '../node_modules/hpe-css-grommet';
 import reducers from './redux/reducers';
 import Auth from './Auth';
 import Login from './components/login';

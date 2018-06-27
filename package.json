@@ -5,8 +5,8 @@
   "dependencies": {
     "auth0-js": "^9.6.1",
     "grommet": "^1.11.0",
-    "grommet-hpe-css": "github:vsanjeevagowda-s/grommet-css#grommet-hpe-css",
     "history": "^4.7.2",
+    "hpe-css-grommet": "^1.6.2",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
     "react-redux": "^5.0.7",
