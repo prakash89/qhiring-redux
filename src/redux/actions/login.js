@@ -1,5 +1,6 @@
 import {LOGIN} from '../actionTypes';
 import API_END_POINT from '../../Api';
+import history from "../../history";
 
 
 export const login = (params) => {
@@ -18,6 +19,12 @@ export const login = (params) => {
         type: LOGIN,
         payload: json
       })
+      if (json.user.userRole === 'admin') {
+        history.push('/adminQuestionsList');
+      } else {
+        history.push('/instruction');
+      }
+
 
     })
     .catch( error => {

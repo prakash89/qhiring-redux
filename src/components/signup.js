@@ -69,12 +69,6 @@ class Signup extends Component {
 
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.message === "You have successfully signed up.") {
-      this.props.history.push('/instruction')
-    }
-  }
-
   onFiledChange(e) {
     this.setState({
       [e.target.name]: e.target.value

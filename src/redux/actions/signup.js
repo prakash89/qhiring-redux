@@ -1,6 +1,6 @@
 import {SIGNUP} from '../actionTypes';
 import API_END_POINT from '../../Api';
-import browserHistory from '../../history';
+import history from '../../history';
 
 export const signup = (params) => {
   return(dispatch) => {
@@ -16,9 +16,9 @@ export const signup = (params) => {
         payload: json
       })
       if (json.user.userRole === "admin") {
-        browserHistory.push('/QuestionsList')
+        history.push('/adminQuestionsList')
       }else{
-        browserHistory.push('/instruction')
+        history.push('/instruction')
       }
 
     })

@@ -28,13 +28,6 @@ class Login extends Component {
     this.props.login(params)
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.message == "You have successfully signed up.") {
-      console.log('componentWillReceiveProps', this.props);
-      this.props.history.push('/instruction')
-    }
-  }
-
   render() {
     return (
       <Box
