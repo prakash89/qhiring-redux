@@ -4,7 +4,7 @@ import { Route, Switch, HashRouter } from 'react-router-dom';
 import { createStore, applyMiddleware } from 'redux';
 import ReduxThunk from 'redux-thunk';
 import { App, Box } from 'grommet';
-import '../node_modules/hpe-css-grommet';
+import '../node_modules/grommet/grommet-hpe.min.css';
 import reducers from './redux/reducers';
 import Auth from './Auth';
 import Login from './components/login';
@@ -15,6 +15,7 @@ import Instaction from './components/instaction';
 import Callback from './components/callback';
 import Header from './components/header';
 import adminQuestionsList from './components/adminQuestionsList';
+import adminUsers from './components/adminUsers';
 
 const store = createStore(
   reducers, {}, applyMiddleware(ReduxThunk)
@@ -50,6 +51,7 @@ class MainRoute extends Component {
                 <Route exact path="/questions" component={Questions} />
                 <Route exact path="/feedback" component={Feedback} />
                 <Route path="/adminQuestionsList" component={adminQuestionsList} />
+                <Route path="/adminUsers" component={adminUsers} />
                 <Route exact path="/callback" render={(props) => {
                   handleAuthentication(props);
                   return <Callback {...props} />
